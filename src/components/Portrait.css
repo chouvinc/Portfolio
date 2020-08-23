@@ -1,0 +1,13 @@
+.circle {
+    border-radius: 50%;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.circle image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
