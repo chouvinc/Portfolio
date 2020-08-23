@@ -1,13 +1,10 @@
-.circle {
+.circle > img {
     border-radius: 50%;
     position: relative;
-    max-width: 100%;
-    height: auto;
+    /* TODO: decide based on the rest of the website how big the avatar should be*/
+    width: 100px;
+    height: 100px;
     overflow: hidden;
-}
-
-.circle image {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    /* object-fit handles cropping for you! */
+    object-fit: cover;
 }

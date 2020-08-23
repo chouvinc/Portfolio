@@ -14,15 +14,10 @@ type PortraitProps = {
 } 
 
 class Portrait extends React.Component<PortraitProps> {
-
-  constructor(props: PortraitProps) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={this.props.shape}>
-        <img src={this.props.location}/>
+        <img alt="" src={this.props.location}/>
         <h1>Hello, world!</h1>
         <h2>This is {this.props.name}.</h2>
       </div>
