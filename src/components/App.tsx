@@ -9,10 +9,12 @@ function App() {
   return (
     <div className="App">
       <Banner items={[{text: "hello", path: "path/to"}]}/>
-      <Block height={100} width={100} childComponents={[
-        new Portrait({name: "Vincent Chou", shape: Shape.CIRCLE, location: corgi})
-      ]}/>
+      <Block height="100em">
+        <Portrait name="Vincent Chou" shape={Shape.CIRCLE} location={corgi}/>
+      </Block>
+      <Block height="100em" color="#e6e6e6">
 
+      </Block>
     </div>
   );
 }
