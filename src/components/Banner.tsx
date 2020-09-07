@@ -1,5 +1,5 @@
 import React from 'react';
-import './Banner.css';
+import '../assets/css/Banner.css';
 
 export type Link = {
     text: string;

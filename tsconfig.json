@@ -20,6 +20,6 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", "tst/Portait.test.tsx", "tst/Block.test.tsx", "tst/Banner.test.tsx", "tst/App.test.tsx"
   ]
 }

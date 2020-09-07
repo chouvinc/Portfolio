@@ -1,5 +1,5 @@
 import React from 'react';
-import './Portrait.css';
+import '../assets/css/Portrait.css';
 
 export enum Shape {
   SQUARE = "square",

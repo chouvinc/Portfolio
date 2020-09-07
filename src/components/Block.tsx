@@ -1,5 +1,5 @@
 import React from 'react';
-import './Block.css';
+import '../assets/css/Block.css';
 
 type BlockProps = {
     height?: string;
@@ -8,12 +8,13 @@ type BlockProps = {
     color?: string;
     alignment?: string;
     margin?: string;
+    id?: string;
 }
 
 class Block extends React.Component<BlockProps> {
     render() {
         return (
-            <div className="block" style={
+            <div id={this.props.id} className="block" style={
                 {
                     height: this.props.height,
                     width: this.props.width,
