@@ -9,9 +9,9 @@ export default abstract class GraphUtils {
     public static buildGraphInTag(tag: string, numNodes: number): void {
         // TODO:
         // 1) <DONE> Generate random collection of dots, ideally equidistance from each other 
-        // 2) Connect the dots with edges
+        // 2) <DONE> Connect the dots with edges
         // 3) Call generation function every 3s
-        // 4) Add animations to fade in the dots
+        // 4) <DONE> Add animations to fade in the dots
         // 5) Make animations start from the middle-most dot
         // 6) Add animations to fade out the dots
         // 7) Make animations start fading out from the outer-most dots
@@ -26,20 +26,36 @@ export default abstract class GraphUtils {
         if (!boundingRect || !boundingRect.height || !boundingRect.width) {
             throw new Error("Bounding element cannot be undefined width or height!");
         }
+
         const nodes: Array<NodePos> = this.buildNodeCoordinatesWithinBounds(numNodes, nodeSize, boundingRect.width, boundingRect.height);
+        const edges: Array<Array<NodePos>> = nodes.flatMap((node, index) => {
+            return this.getRandomBetween(0, 3) > 2 ? nodes.slice(index + 1).map(nodePair => [node, nodePair]): [];
+        });
 
         vis.selectAll("circle .nodes")
             .data(nodes)
             .enter()
                 .append("svg:circle")
-                .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; })
+                .attr("cx", d => { return d.x; })
+                .attr("cy", d => { return d.y; })
                 .attr("r", 0)
                 .transition()
                 .attr("r", nodeSize)
-                .attr("fill", "#aaa")
-                .transition()
                 .attr("fill", "black");
+        
+        vis.selectAll("line .edges")
+            .data(edges)
+            .enter()
+                .append("svg:line")
+                .attr("x1", d => { return d[0].x; })
+                .attr("y1", d => { return d[0].y; })
+                .attr("x2", d => { return d[1].x; })
+                .attr("y2", d => { return d[1].y; })
+                .transition()
+                .duration(1000)
+                .attr("stroke", "none")
+                .attr("stroke", "black")
+                .attr("stroke-width", 1);
     }
 
     public static buildNodeCoordinatesWithinBounds(numCoords: number, nodeRadius: number, xMax: number, yMax: number): Array<NodePos> {
