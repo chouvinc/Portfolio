@@ -10,7 +10,7 @@ type AppProps = {}
 
 class App extends React.Component<AppProps> {
   componentDidMount() {
-    GraphUtils.buildGraphInTag("graph", 10);
+    GraphUtils.buildGraphInTag("graph", 15);
   }
 
   render() {
