@@ -74,6 +74,7 @@ export default abstract class GraphUtils {
                 .remove();
         }
 
+        // TODO: refactor this so the function does what it says (builds a graph), leave scheduling to the parent (or another function)
         let nodes: Array<NodePos> = this.buildNodeCoordinatesWithinBounds(numNodes, nodeSize, boundingRect.width, boundingRect.height);
         let edges: Array<Array<NodePos>> = nodes.flatMap((node, index) => {
             return this.getRandomBetween(0, 3) > 2 ? nodes.slice(index + 1).map(nodePair => [node, nodePair]): [];
